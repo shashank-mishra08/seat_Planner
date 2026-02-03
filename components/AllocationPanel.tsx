@@ -47,10 +47,14 @@ export default function AllocationPanel() {
                             <Users className="absolute left-3 top-3.5 h-5 w-5 text-slate-500" />
                             <Input
                                 type="number"
+                                min="1"
                                 placeholder="Enter count..."
                                 value={totalStudents}
                                 onChange={(e) => setTotalStudents(e.target.value)}
                                 className="glass-input pl-10 h-12 text-lg"
+                                onKeyDown={(e) => {
+                                    if (e.key === '-' || e.key === 'e') e.preventDefault();
+                                }}
                             />
                         </div>
                     </div>

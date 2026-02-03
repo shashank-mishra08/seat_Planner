@@ -7,6 +7,7 @@ interface PlannerContextType {
     classrooms: Classroom[];
     addClassroom: (classroom: Classroom) => void;
     deleteClassroom: (roomId: string) => void;
+    clearClassrooms: () => void;
     allocateExam: (totalStudents: number) => AllocationResult[] | string;
 }
 
@@ -41,6 +42,11 @@ export function PlannerProvider({ children }: { children: React.ReactNode }) {
 
     const deleteClassroom = (roomId: string) => {
         setClassrooms((prev) => prev.filter((c) => c.roomId !== roomId));
+    };
+
+    const clearClassrooms = () => {
+        setClassrooms([]);
+        localStorage.removeItem('seat-planner-classrooms');
     };
 
     const allocateExam = (totalStudents: number): AllocationResult[] | string => {
@@ -97,7 +103,7 @@ export function PlannerProvider({ children }: { children: React.ReactNode }) {
     };
 
     return (
-        <PlannerContext.Provider value={{ classrooms, addClassroom, deleteClassroom, allocateExam }}>
+        <PlannerContext.Provider value={{ classrooms, addClassroom, deleteClassroom, clearClassrooms, allocateExam }}>
             {children}
         </PlannerContext.Provider>
     );
