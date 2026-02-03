@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google"; // Switch to Outfit for a premium tech feel
 import "./globals.css";
+import Navbar from "@/components/Navbar";
 import { PlannerProvider } from "@/context/PlannerContext";
 
 const outfit = Outfit({ subsets: ["latin"] });
@@ -21,6 +22,7 @@ export default function RootLayout({
         className={`${outfit.className} antialiased min-h-screen selection:bg-indigo-500/30 selection:text-indigo-200`}
       >
         <PlannerProvider>
+          <Navbar />
           {children}
         </PlannerProvider>
       </body>

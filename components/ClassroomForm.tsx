@@ -17,6 +17,7 @@ export default function ClassroomForm() {
         nearWashroom: false
     });
     const [error, setError] = useState('');
+    const [success, setSuccess] = useState(false);
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -35,6 +36,8 @@ export default function ClassroomForm() {
                 nearWashroom: formData.nearWashroom
             });
             setFormData({ roomId: '', capacity: '', floorNo: '', nearWashroom: false });
+            setSuccess(true);
+            setTimeout(() => setSuccess(false), 3000);
         } catch (err: any) {
             setError(err.message);
         }
@@ -116,6 +119,7 @@ export default function ClassroomForm() {
                 </div>
 
                 {error && <p className="text-sm text-red-400 bg-red-500/10 p-2 rounded border border-red-500/20">{error}</p>}
+                {success && <p className="text-sm text-emerald-400 bg-emerald-500/10 p-2 rounded border border-emerald-500/20 text-center">Classroom added successfully!</p>}
 
                 <Button type="submit" className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white border-0 py-6 text-base shadow-lg shadow-indigo-500/25 transition-all hover:scale-[1.02] active:scale-[0.98]">
                     Add Classroom
