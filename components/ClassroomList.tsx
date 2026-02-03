@@ -6,7 +6,7 @@ import { Trash2, Building2, MapPin, Users } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function ClassroomList() {
-    const { classrooms, deleteClassroom } = usePlanner();
+    const { classrooms, deleteClassroom, clearClassrooms } = usePlanner();
 
     return (
         <motion.div
@@ -22,9 +22,21 @@ export default function ClassroomList() {
                     </div>
                     <h2 className="text-xl font-semibold text-white">Classrooms</h2>
                 </div>
-                <span className="bg-white/10 text-white px-3 py-1 rounded-full text-xs font-medium">
-                    {classrooms.length} Total
-                </span>
+                <div className="flex items-center gap-2">
+                    <span className="bg-white/10 text-white px-3 py-1 rounded-full text-xs font-medium">
+                        {classrooms.length} Total
+                    </span>
+                    {classrooms.length > 0 && (
+                        <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={clearClassrooms}
+                            className="h-7 px-2 text-xs text-red-400 hover:text-red-300 hover:bg-red-500/10"
+                        >
+                            Clear All
+                        </Button>
+                    )}
+                </div>
             </div>
 
             <div className="flex-1 overflow-auto pr-2 -mr-2 space-y-3 custom-scrollbar">
