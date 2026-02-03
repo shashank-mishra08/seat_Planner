@@ -17,12 +17,12 @@ export default function Navbar() {
 
     return (
         <nav className="fixed top-0 left-0 right-0 z-50 bg-black/50 backdrop-blur-xl border-b border-white/10">
-            <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-                <div className="flex items-center gap-2">
+            <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-center relative">
+                <div className="absolute left-6 flex items-center gap-2">
                     <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center">
                         <span className="text-white font-bold">SP</span>
                     </div>
-                    <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-400">
+                    <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-400 hidden md:block">
                         SeatPlanner
                     </span>
                 </div>
@@ -35,7 +35,7 @@ export default function Navbar() {
                         return (
                             <Link key={item.path} href={item.path}>
                                 <div className={cn(
-                                    "relative px-4 py-2 rounded-lg flex items-center gap-2 text-sm font-medium transition-all duration-300",
+                                    "relative px-6 py-2 rounded-lg flex items-center gap-2 text-sm font-medium transition-all duration-300",
                                     isActive ? "text-white" : "text-slate-400 hover:text-white hover:bg-white/5"
                                 )}>
                                     {isActive && (
